@@ -13,12 +13,12 @@ function ContactList() {
   const {handleAddContactinContacts} = useAppContext()
 
   useEffect(()=>{
-      axios.get('http://localhost:8000/contacts')
+      axios.get('https://contact-nodejs.onrender.com/contacts')
       .then(response=>{
         handleAddContactinContacts(response.data.contacts);
       })
       .catch(err=>{
-        setError(err.response.data.message)
+        setError(err.response.data.message || "something went wrong")
       })
       .finally(()=>setLoading(false));
 
